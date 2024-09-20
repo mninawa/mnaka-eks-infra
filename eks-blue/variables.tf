@@ -66,16 +66,18 @@ variable "gitops_addons_revision" {
   default     = "HEAD"
 }
 
+//git@github.com:aws-samples/eks-blueprints-workloads.git
+
 variable "gitops_workloads_org" {
   type        = string
   description = "Git repository org/user contains for workloads"
-  default     = "git@github.com:aws-samples"
+  default     = "git@github.com:mninawa/mnaka-workloads"
 }
 
 variable "gitops_workloads_repo" {
   type        = string
   description = "Git repository contains for workloads"
-  default     = "eks-blueprints-workloads"
+  default     = "teams"
 }
 
 variable "gitops_workloads_path" {
