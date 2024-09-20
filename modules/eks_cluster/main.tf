@@ -215,7 +215,7 @@ module "eks" {
   eks_managed_node_groups = {
     initial = {
       node_group_name = local.node_group_name
-      instance_types  = ["m5.large"]
+      instance_types  = ["t3.micro"]
 
       min_size     = 1
       max_size     = 5
