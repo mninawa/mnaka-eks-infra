@@ -215,7 +215,7 @@ module "eks" {
   eks_managed_node_groups = {
     initial = {
       node_group_name = local.node_group_name
-      instance_types  = ["t3.micro"]
+      instance_types  = ["m5.large"]
 
       min_size     = 1
       max_size     = 5
@@ -556,7 +556,7 @@ resource "kubernetes_secret" "git_secrets" {
 # GitOps Bridge: Bootstrap
 ################################################################################
 module "gitops_bridge_bootstrap" {
-  source = "github.com/mninawa/mnaka-workloads/gitops-bridge-argocd-bootstrap-terraform-main"
+  source = "github.com/gitops-bridge-dev/gitops-bridge-argocd-bootstrap-terraform?ref=v2.0.0"
 
   cluster = {
     cluster_name = module.eks.cluster_name
