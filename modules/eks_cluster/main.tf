@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 provider "aws" {
-  region = "af-south-1"
-  alias  = "South Africa"
+  region = "us-east-1"
+  alias  = "africa"
 }
 
 locals {
