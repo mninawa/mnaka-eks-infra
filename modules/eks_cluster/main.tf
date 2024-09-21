@@ -1,7 +1,10 @@
-# Required for public ECR where Karpenter artifacts are hosted
+provider "aws" {
+  region = "af-south-1"
+}
+
 provider "aws" {
   region = "us-east-1"
-  alias  = "ecr"
+  alias  = "virginia"
 }
 
 locals {
@@ -47,20 +50,20 @@ locals {
   #---------------------------------------------------------------
 
   aws_addons = {
-    enable_cert_manager          = true
-    enable_aws_ebs_csi_resources = true # generate gp2 and gp3 storage classes for ebs-csi
+    enable_cert_manager                 = true
+    enable_aws_ebs_csi_resources        = true # generate gp2 and gp3 storage classes for ebs-csi
     #enable_aws_efs_csi_driver                    = true
     #enable_aws_fsx_csi_driver                    = true
-    enable_aws_cloudwatch_metrics = true
+    enable_aws_cloudwatch_metrics       = false
     #enable_aws_privateca_issuer                  = true
     #enable_cluster_autoscaler                    = true
     enable_external_dns                 = true
     enable_external_secrets             = true
     enable_aws_load_balancer_controller = true
     #enable_fargate_fluentbit                     = true
-    enable_aws_for_fluentbit = true
+    enable_aws_for_fluentbit            = false
     #enable_aws_node_termination_handler          = true
-    enable_karpenter = true
+    enable_karpenter                    = false 
     #enable_velero                                = true
     #enable_aws_gateway_api_controller            = true
     #enable_aws_secrets_store_csi_driver_provider = true
@@ -71,10 +74,10 @@ locals {
     #enable_cluster_proportional_autoscaler       = true
     #enable_gatekeeper                            = true
     #enable_gpu_operator                          = true
-    enable_ingress_nginx = true
-    enable_kyverno       = true
+    enable_ingress_nginx                = true
+    enable_kyverno                      = true
     #enable_kube_prometheus_stack                 = true
-    enable_metrics_server = true
+    enable_metrics_server               = true
     #enable_prometheus_adapter                    = true
     #enable_secrets_store_csi_driver              = true
     #enable_vpa                                   = true
@@ -116,8 +119,8 @@ locals {
       argocd_route53_weight      = local.argocd_route53_weight
       route53_weight             = local.route53_weight
       ecsfrontend_route53_weight = local.ecsfrontend_route53_weight
-      #target_group_arn = local.service == "blue" ? data.aws_lb_target_group.tg_blue.arn : data.aws_lb_target_group.tg_green.arn # <-- Add this line
-      #      external_lb_dns = data.aws_lb.alb.dns_name
+      # target_group_arn = local.service == "blue" ? data.aws_lb_target_group.tg_blue.arn : data.aws_lb_target_group.tg_green.arn # <-- Add this line
+      # external_lb_dns = data.aws_lb.alb.dns_name
     }
   )
 
@@ -215,10 +218,10 @@ module "eks" {
   eks_managed_node_groups = {
     initial = {
       node_group_name = local.node_group_name
-      instance_types  = ["m5.large"]
+      instance_types  = ["t3.medium"]
 
       min_size     = 1
-      max_size     = 5
+      max_size     = 3
       desired_size = 3
       subnet_ids   = data.aws_subnets.private.ids
     }
@@ -294,10 +297,10 @@ module "eks_blueprints_platform_teams" {
 
       resource_quota = {
         hard = {
-          "requests.cpu"    = "10000m",
-          "requests.memory" = "20Gi",
-          "limits.cpu"      = "20000m",
-          "limits.memory"   = "50Gi",
+          "requests.cpu"    = "3000m",
+          "requests.memory" = "2Gi",
+          "limits.cpu"      = "3000m",
+          "limits.memory"   = "6Gi",
           "pods"            = "20",
           "secrets"         = "20",
           "services"        = "20"
@@ -383,9 +386,9 @@ module "eks_blueprints_dev_teams" {
       resource_quota = {
         hard = {
           "requests.cpu"    = "100",
-          "requests.memory" = "20Gi",
+          "requests.memory" = "6Gi",
           "limits.cpu"      = "200",
-          "limits.memory"   = "50Gi",
+          "limits.memory"   = "6Gi",
           "pods"            = "100",
           "secrets"         = "10",
           "services"        = "20"
@@ -465,9 +468,9 @@ module "eks_blueprints_ecsdemo_teams" {
       resource_quota = {
         hard = {
           "requests.cpu"    = "100",
-          "requests.memory" = "20Gi",
+          "requests.memory" = "6Gi",
           "limits.cpu"      = "200",
-          "limits.memory"   = "50Gi",
+          "limits.memory"   = "6Gi",
           "pods"            = "100",
           "secrets"         = "10",
           "services"        = "20"
@@ -513,6 +516,7 @@ module "eks_blueprints_ecsdemo_teams" {
 ################################################################################
 data "aws_secretsmanager_secret" "workload_repo_secret" {
   name = local.aws_secret_manager_git_private_ssh_key_name
+  # name = "argocd-admin-secret.mnaka-dev"
 }
 
 data "aws_secretsmanager_secret_version" "workload_repo_secret" {

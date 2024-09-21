@@ -19,13 +19,13 @@ variable "ingress_type" {
 variable "hosted_zone_name" {
   type        = string
   description = "Route53 domain for the cluster."
-  default     = "felidaen.co"
+  default     = "mnaka.click"
 }
 
 variable "eks_admin_role_name" {
   type        = string
   description = "Additional IAM role to be admin in the cluster"
-  default     = "Admin"
+  default     = "AWSReservedSSO_AWSAdministratorAccess_0a9b1bfd0c855752"
 }
 
 variable "aws_secret_manager_git_private_ssh_key_name" {
@@ -43,7 +43,7 @@ variable "argocd_secret_manager_name_suffix" {
 variable "gitops_addons_org" {
   type        = string
   description = "Git repository org/user contains for addons"
-  default     = "git@github.com:mninawa/mnaka-workloads"
+  default     = "git@github.com:mninawa"
 }
 variable "gitops_addons_repo" {
   type        = string
@@ -66,18 +66,16 @@ variable "gitops_addons_revision" {
   default     = "HEAD"
 }
 
-//git@github.com:aws-samples/eks-blueprints-workloads.git
-
 variable "gitops_workloads_org" {
   type        = string
   description = "Git repository org/user contains for workloads"
-  default     = "git@github.com:mninawa/mnaka-workloads"
+  default     = "git@github.com:mninawa"
 }
 
 variable "gitops_workloads_repo" {
   type        = string
   description = "Git repository contains for workloads"
-  default     = "teams"
+  default     = "eks-blueprints-workloads"
 }
 
 variable "gitops_workloads_path" {

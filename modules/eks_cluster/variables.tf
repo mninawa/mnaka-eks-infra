@@ -1,13 +1,13 @@
 variable "aws_region" {
   description = "AWS Region"
   type        = string
-  default     = "us-west-2"
+  default     = "af-south-1"
 }
 
 variable "environment_name" {
   description = "The name of Environment Infrastructure stack, feel free to rename it. Used for cluster and VPC names."
   type        = string
-  default     = "eks-blueprint"
+  default     = "mnaka-dev"
 }
 
 variable "ingress_type" {
@@ -19,13 +19,13 @@ variable "ingress_type" {
 variable "hosted_zone_name" {
   type        = string
   description = "Route53 domain for the cluster."
-  default     = ""
+  default     = "mnaka.click"
 }
 
 variable "eks_admin_role_name" {
   type        = string
   description = "Additional IAM role to be admin in the cluster"
-  default     = ""
+  default     = "AWSReservedSSO_AWSAdministratorAccess_0a9b1bfd0c855752"
 }
 
 variable "aws_secret_manager_git_private_ssh_key_name" {
@@ -99,7 +99,7 @@ variable "service_name" {
 variable "cluster_version" {
   description = "The Version of Kubernetes to deploy"
   type        = string
-  default     = "1.25"
+  default     = "1.27"
 }
 
 variable "argocd_route53_weight" {

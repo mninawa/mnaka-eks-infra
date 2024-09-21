@@ -413,4 +413,3 @@ aws secretsmanager get-secret-value \
   --query SecretString \
   --output text --region $AWS_REGION
 ```
-# mnaka-eks-infra
