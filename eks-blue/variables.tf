@@ -43,7 +43,7 @@ variable "argocd_secret_manager_name_suffix" {
 variable "gitops_addons_org" {
   type        = string
   description = "Git repository org/user contains for addons"
-  default     = "git@github.com:aws-samples"
+  default     = "git@github.com:mninawa/mnaka-workloads"
 }
 variable "gitops_addons_repo" {
   type        = string
