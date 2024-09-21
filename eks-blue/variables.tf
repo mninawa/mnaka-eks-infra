@@ -19,13 +19,13 @@ variable "ingress_type" {
 variable "hosted_zone_name" {
   type        = string
   description = "Route53 domain for the cluster."
-  default     = "mnaka.click"
+  default     = "felidaen.co"
 }
 
 variable "eks_admin_role_name" {
   type        = string
   description = "Additional IAM role to be admin in the cluster"
-  default     = "AWSReservedSSO_AWSAdministratorAccess_0a9b1bfd0c855752"
+  default     = "Admin"
 }
 
 variable "aws_secret_manager_git_private_ssh_key_name" {

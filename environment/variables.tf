@@ -25,5 +25,5 @@ variable "argocd_secret_manager_name_suffix" {
 variable "hosted_zone_name" {
   type        = string
   description = "Route53 domain for the cluster."
-  default     = "mnaka.click"
+  default     = "felidaen.co"
 }
