@@ -48,17 +48,17 @@ variable "gitops_addons_org" {
 variable "gitops_addons_repo" {
   type        = string
   description = "Git repository contains for addons"
-  default     = "eks-blueprints-add-ons"
+  default     = "mnaka-workloads"
 }
 variable "gitops_addons_basepath" {
   type        = string
   description = "Git repository base path for addons"
-  default     = "argocd/"
+  default     = "blueprints-add-ons/argocd/"
 }
 variable "gitops_addons_path" {
   type        = string
   description = "Git repository path for addons"
-  default     = "argocd/bootstrap/control-plane/addons"
+  default     = "blueprints-add-ons/argocd/bootstrap/control-plane/addons"
 }
 variable "gitops_addons_revision" {
   type        = string
