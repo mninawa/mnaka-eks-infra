@@ -43,7 +43,7 @@ variable "argocd_secret_manager_name_suffix" {
 variable "gitops_addons_org" {
   type        = string
   description = "Git repository org/user contains for addons"
-  default     = "https://github.com/mninawa/"
+  default     = "https://github.com/mninawa"
 }
 variable "gitops_addons_repo" {
   type        = string
@@ -69,7 +69,7 @@ variable "gitops_addons_revision" {
 variable "gitops_workloads_org" {
   type        = string
   description = "Git repository org/user contains for workloads"
-  default     = "https://github.com/mninawa/"
+  default     = "https://github.com/mninawa"
 }
 
 variable "gitops_workloads_repo" {
