@@ -199,7 +199,7 @@ data "aws_secretsmanager_secret_version" "admin_password_version" {
 }
 
 ################################################################################
-# EKS Cluster
+# EKS Clusters
 ################################################################################
 #tfsec:ignore:aws-eks-enable-control-plane-logging
 module "eks" {
