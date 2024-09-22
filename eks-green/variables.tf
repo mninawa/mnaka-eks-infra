@@ -75,7 +75,7 @@ variable "gitops_workloads_org" {
 variable "gitops_workloads_repo" {
   type        = string
   description = "Git repository contains for workloads"
-  default     = "eks-blueprints-workloads"
+  default     = "mnaka-workloads"
 }
 
 variable "gitops_workloads_path" {
