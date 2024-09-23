@@ -69,7 +69,7 @@ variable "gitops_addons_revision" {
 variable "gitops_workloads_org" {
   type        = string
   description = "Git repository org/user contains for workloads"
-  default     = "https://github.com/mninawa"
+   default     = "git@github.com:mninawa"
 }
 
 variable "gitops_workloads_repo" {
