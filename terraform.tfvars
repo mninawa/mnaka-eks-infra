@@ -11,8 +11,8 @@ eks_admin_role_name = "Admin" # Additional role admin in the cluster (usually th
 #gitops_addons_basepath = "argocd/"
 
 # EKS Blueprint Workloads ArgoCD App of App repository
-gitops_workloads_org      = "https://github.com/mninawa/mnaka-workloads"
-gitops_workloads_repo     = "mnaka-dev-workloads"
+gitops_workloads_org      = "https://github.com/mninawa/"
+gitops_workloads_repo     = "mnaka-workloads"
 gitops_workloads_revision = "main"
 gitops_workloads_path     = "envs/dev"
 
